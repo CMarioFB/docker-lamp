@@ -10,13 +10,5 @@
       echo "Mi <u>primer</u> PHP <br/>";
       echo "Parte de PHP<br />";
    ?>
-   <ul>
-   <?php
-      // Bucle para 10 iteraciones
-      for ($i=0; $i<10; $i++) {
-         echo "<li>Línea ".$i."</li>";
-      }
-   ?>
-   </ul>
 </body>
 </html>
