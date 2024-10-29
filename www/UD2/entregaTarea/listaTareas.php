@@ -13,28 +13,17 @@
               include('header.php');
          ?>
     <div class="container-fluid">
-         <!--
         <div class="row">
-
-            menu -->
-            <!--
+            <!--menu-->
             <?php
               include('menu.php');
          ?>
          
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Aplicación básica en PHP</h2>
-                </div>
-                <div class="container">
-                    <p>Actualmente nos encontramos desarrollando una aplicación básica de PHP.</p>
-                    <p>Que va a tratar de generar tareas y ver su estado</p>.
-                </div>
-            </main>
-        </div>   -->
-
-
-        <div class="table">
+                    
+                    <div class="table">
+                    <h2>Lista de tareas</h2>
 <table class="table table-striped table-hover">
 <thead class="thead">
 <tr>
@@ -45,14 +34,17 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-...
+<td>1</td>
+<td>2</td>
+<td>3</td>
 </tr>
 </table>
 
 
-
-
+                </div>
+                
+            </main>
+        </div>
     </div>
     <!--footer-->
     <?php

@@ -40,22 +40,20 @@
 
 
                         <label class="form-label" for="tarea">Selecciona una tarea:</label>
-                        <select class="form-select" id="tarea" name="tarea" required>
-                            <option value="Coca Cola">Estudiar Inglés</option>
-                            <option value="Pepsi Cola">Planchar</option>
-                            <option value="Fanta Naranja">Aspirar</option>
-                            <option value="Trina Manzana">Hacer de comer</option>
-                        </select>
+                        <input name="tarea" id="tarea">
                         <br><br>
                         <label for="descripcion">Descripción:</label>
                         <br>
                         <textarea name="descripcion" rows="5" cols="40"></textarea>
                         <br><br>
                         <label for="estado">Estado:</label>
-                       
-                        <input type="radio" name="estado" value="sin comenzar">Sin comenzar
-                        <input type="radio" name="estado" value="en trámite">Ejecutándose
-                        <input type="radio" name="estado" value="acabada">Finalizada
+                        <select class="form-select" id="tarea" name="tarea" required>
+                            <option value="sin comenzar">Sin comenzar</option>
+                            <option value="en tramite">En trámite</option>
+                            <option value="acabada">Acabada</option>
+                            
+                        </select>
+                        
                         <br><br>
                         
                         <button type="submit" class="btn btn-primary">Enviar</button>
