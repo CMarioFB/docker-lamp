@@ -13,8 +13,11 @@
               include('header.php');
          ?>
     <div class="container-fluid">
+         <!--
         <div class="row">
-            <!--menu-->
+
+            menu -->
+            <!--
             <?php
               include('menu.php');
          ?>
@@ -28,7 +31,28 @@
                     <p>Que va a tratar de generar tareas y ver su estado</p>.
                 </div>
             </main>
-        </div>
+        </div>   -->
+
+
+        <div class="table">
+<table class="table table-striped table-hover">
+<thead class="thead">
+<tr>
+<th>Identificador</th>
+<th>Descriptción</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+...
+</tr>
+</table>
+
+
+
+
     </div>
     <!--footer-->
     <?php

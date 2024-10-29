@@ -7,9 +7,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    Opción1
-                </a>
+                
+                <a class="nav-link" href="UD2/entregaTarea/nuevaForm.php" target="_blank">Nuevo Formulario-Crear Tarea</a><br />
+                   
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">
