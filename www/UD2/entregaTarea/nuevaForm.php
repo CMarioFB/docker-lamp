@@ -7,50 +7,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-
-
     <!--header-->
-    
-<?php
-              include('header.php');
-         ?>
+    <?php
+        include_once('header.php');
+    ?>
     <div class="container-fluid">
         <div class="row">
             <!--menu-->
             <?php
-              include('menu.php');
-         ?>
+              include_once('menu.php');
+            ?>
          
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Aplicación TAREAS en PHP</h2>
-                </div>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h2>Crear TAREAS en PHP</h2>
+            </div>
                 <div class="container">
                 
                     <form class="mb-5" method="POST" action="nueva.php">
-                    <label class="form-label" for="tarea">Formulario para generar tareas</label>
+                    
                     <br>
-                    <!--
-                    <div class="mb-3">
-                    <label class="form-label">...</label>
-                    <input class="form-control">
-                    </div>
-                    -->
-
-
-                        <label class="form-label" for="tarea">Selecciona una tarea:</label>
-                        <input name="tarea" id="tarea">
+                    
+                        <label class="form-label" for="id">Id de la tarea:(número)</label>
+                        <input  class="form-control" name="id" id="id">
                         <br><br>
                         <label for="descripcion">Descripción:</label>
                         <br>
-                        <textarea name="descripcion" rows="5" cols="40"></textarea>
+                        <input class="form-label"  type="text" name="descripcion" id="descripcion">
+                        
                         <br><br>
-                        <label for="estado">Estado:</label>
-                        <select class="form-select" id="tarea" name="tarea" required>
-                            <option value="sin comenzar">Sin comenzar</option>
-                            <option value="en tramite">En trámite</option>
-                            <option value="acabada">Acabada</option>
+                        <label class="form-label" for="estado">Estado:</label>
+                        <select class="form-select" id="estado" name="estado" required>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en proceso">En proceso</option>
+                            <option value="completada">Completada</option>
                             
                         </select>
                         
@@ -66,7 +56,7 @@
     </div>
     <!--footer-->
     <?php
-              include('footer.php');
+              include_once('footer.php');
          ?>
     
 </body>

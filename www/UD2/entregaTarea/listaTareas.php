@@ -9,14 +9,14 @@
 <body>
     <!--header-->
     
-<?php
-              include('header.php');
-         ?>
+    <?php
+         include_once('header.php');
+    ?>
     <div class="container-fluid">
         <div class="row">
             <!--menu-->
             <?php
-              include('menu.php');
+              include_once('menu.php');
          ?>
          
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -33,11 +33,33 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-</tr>
+<?php 
+
+include_once('utils.php');
+
+
+/* con $tareas con indices
+
+for ($i=0; $i<count($tareas); $i++) {
+    echo "<tr>";
+    for ($j=0; $j<count($tareas[$i]); $j++) {
+        echo "<td>";
+        echo $tareas[$i][$j];
+        echo "</td>";
+    }
+    echo "</tr><br/>";
+}
+*/
+
+for ($i=0; $i<count($array); $i++) {
+    echo "<tr>";
+        echo "<td>".$array[$i]['id']."</td>";
+        echo "<td>".$array[$i]['descripcion']."</td>";
+        echo "<td>".$array[$i]['estado']."</td>";
+    echo "</tr><br/>";
+}
+?>
+</tbody>
 </table>
 
 
@@ -48,7 +70,7 @@
     </div>
     <!--footer-->
     <?php
-              include('footer.php');
+              include_once('footer.php');
          ?>
     
 </body>

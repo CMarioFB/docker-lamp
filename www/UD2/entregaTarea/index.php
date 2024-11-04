@@ -9,31 +9,37 @@
 <body>
     <!--header-->
     
-<?php
-              include('header.php');
-         ?>
+    <?php
+        include_once('header.php');
+    ?>
+
     <div class="container-fluid">
         <div class="row">
             <!--menu-->
             <?php
-              include('menu.php');
-         ?>
+              include_once('menu.php');
+            ?>
          
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h2>Aplicación básica en PHP</h2>
                 </div>
+
                 <div class="container">
                     <p>Actualmente nos encontramos desarrollando una aplicación básica de PHP.</p>
-                    <p>Que va a tratar de generar tareas y ver su estado</p>.
+                    <p>La aplicación consiste en de generar tareas y ver su estado validando las entradas</p>.
+                    <p>Podemos crear nuevas tareas y añadirlas a las ya creadas.</p>
+                    <p>Tambíen podemos ver el listado de las tareas que tenemos introducidas</p>
                 </div>
+
             </main>
         </div>
     </div>
     <!--footer-->
     <?php
-              include('footer.php');
-         ?>
+         include_once('footer.php');
+    ?>
     
 </body>
 </html>
