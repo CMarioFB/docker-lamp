@@ -38,19 +38,6 @@
 include_once('utils.php');
 
 
-/* con $tareas con indices
-
-for ($i=0; $i<count($tareas); $i++) {
-    echo "<tr>";
-    for ($j=0; $j<count($tareas[$i]); $j++) {
-        echo "<td>";
-        echo $tareas[$i][$j];
-        echo "</td>";
-    }
-    echo "</tr><br/>";
-}
-*/
-
 for ($i=0; $i<count($array); $i++) {
     echo "<tr>";
         echo "<td>".$array[$i]['id']."</td>";

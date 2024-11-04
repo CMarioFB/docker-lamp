@@ -9,7 +9,7 @@
                     include ('utils.php');
               
                
-            $x=" http://www.example.com/test_form.php/%22%3E%3Cscript%3Ealert('hacked')%3C/script%3E ";
+            $x=" http://www.example.com/test_form.php/%22%3E%3Cscript%3Ealert('hacked')%3C/script%3E      f   r";
             echo strlen($x).$x."<br/>";
 
 

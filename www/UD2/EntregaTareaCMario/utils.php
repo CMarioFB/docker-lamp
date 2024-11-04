@@ -49,7 +49,7 @@ function texto_valido($dato) {
 // guardar tarea en array
 function guardar_tarea ($id,$descripcion,$estado,$x,$array){
      
-    /* $x = count($array);  */
+   
     $array[$x]['id'] = $id;
     $array[$x]['descripcion'] = $descripcion;
     $array[$x]['estado'] = $estado;   
@@ -64,14 +64,6 @@ for($i = 0; $i < count($palabras); $i++) {
 echo $palabras[$i],"<br />";
 }
 }
-
-
-function prueba($dato){
-    $dato= $dato." => prueba";
-    return $dato;
-}
-
-
 
 
 ?>
