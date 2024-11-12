@@ -2,7 +2,7 @@
 // el siguiente código comprobaría el establecimiento de una conexión con la base de datos
 // “colegio” y finaliza la ejecución si se produce algún error
 
-//1. Crear la conexión usamos  @
+//1. Crear la conexión usamos  @ igual en los 3 tipos de conexion
 @$conexion = new mysqli('db', 'root', 'test', 'colegio');
 //2. Comprobar la conexión
 $error = $conexion->connect_errno;
@@ -12,6 +12,10 @@ if($error !=null){
 echo 'Conexión correcta';
 //3. Cerrar la conexión
 $conexion->close();
+
+
+
+
 
 // =======================================================================================
 

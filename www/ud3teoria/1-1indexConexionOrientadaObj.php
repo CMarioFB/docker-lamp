@@ -1,4 +1,6 @@
 <?php
+
+// *** MYSQL Orientado a Objetos *** //
 //1. Crear la conexión 
 $conexion = new mysqli('db', 'root', 'test', 'colegio');
 //2. Comprobar la conexión
