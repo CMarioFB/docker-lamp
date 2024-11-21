@@ -48,6 +48,7 @@
             <p>Comprueba el resultado devuelto por los siguientes fragmentos de código:</p>
             <?php
             $a = "true";
+            
             echo 'is_bool($a): ' . is_bool($a) . '<br />';
             $b = 0;
             echo 'is_bool($b): ' . is_bool($b) . '<br />';

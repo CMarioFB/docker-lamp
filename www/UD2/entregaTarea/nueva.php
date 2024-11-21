@@ -31,11 +31,14 @@
                 }else{
                     $estado=test_input($_POST["estado"]);
                 }
+
+               
+                /*
                 echo $id;
                 echo $descripcion;
                 echo $estado;
                 echo "Error=".$Error;
-
+                */
 
                 $x = count($array);
                 /*
