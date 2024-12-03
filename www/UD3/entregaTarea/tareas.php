@@ -26,9 +26,12 @@
                         <table class="table table-striped table-hover">
                             <thead class="thead">
                                 <tr>                            
-                                    <th>Identificador</th>
-                                    <th>Descriptción</th>
+                                    <th>Id</th>
+                                    <th>Titulo</th>
+                                    <th>Descripción</th>
                                     <th>Estado</th>
+                                    <th>Usuario</th>
+                                    <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,6 +43,12 @@
                                         echo '<td>' . $tarea['id'] . '</td>';
                                         echo '<td>' . $tarea['descripcion'] . '</td>';
                                         echo '<td>' . $tarea['estado'] . '</td>';
+                                        echo '<td>' . $tarea['estado'] . '</td>';
+                                        echo '<td>' . $tarea['estado'] . '</td>';
+                                        echo '<td>';
+                                        echo '<a class="btn btn-sm btn-outline-success me-2" href="donacionForm.php?id=' . $tarea['id'] . '" role="button">Editar</a>';
+                                        echo '<a class="btn btn-sm btn-outline-danger" href="donanteBorrar.php?id=' . $tarea['id'] . '" role="button">Borrar</a>';
+                                        echo '</td>';
                                         echo '</tr>';
                                     }
                                 ?>

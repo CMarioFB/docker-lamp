@@ -11,58 +11,17 @@ function conecta()
     return $conPDO;
 }
 
-function conectaTareas()
+function conectaDonaciones()
 {
     $servername = 'db';
     $username = 'root';
     $password = 'test';
-    $dbname = 'tareas';
+    $dbname = 'donaciones';
 
     $conPDO = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conPDO;
 }
-
-function listaUsuarios()
-{
-    try {
-        $conn = conectaTareas(); 
-        $sql = 'SELECT u.* FROM usuarios u';
-        
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $resultados = $stmt->fetchAll();
-        return $resultados;
-    }
-    catch (PDOException $e) {
-        return null;
-    }
-    finally
-    {
-        $conn = null;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function creaDB()
 {
@@ -131,7 +90,33 @@ function creaTablaAdmnistradores()
     return creaTabla($sql);
 }
 
+function listaDonantes($codPostal, $grupo)
+{
+    try {
+        $conn = conectaDonaciones(); 
+        $sql = 'SELECT d.* FROM donantes d';
+        if (isset($codPostal))
+        {
+            $sql = $sql . " LEFT JOIN historico h ON d.id = h.donante WHERE d.codigo_postal = '$codPostal'";
+            if (isset($grupo)) $sql = $sql . " AND d.grupo_sanguineo = '$grupo'";
+            $sql = $sql . " AND (h.fecha_proxima_donacion IS NULL OR h.fecha_proxima_donacion > CURDATE())";
+        }
 
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $resultados = $stmt->fetchAll();
+        return $resultados;
+    }
+    catch (PDOException $e) {
+        return null;
+    }
+    finally
+    {
+        $conn = null;
+    }
+}
 
 function buscaDonante($id)
 {

@@ -5,11 +5,10 @@
 
     <div class="container-fluid">
         <div class="row">
-        <?php include_once('menu.php'); ?>
             <main class="col">
                 
                 <div class="container justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Usuarios</h2>
+                    <h2>Usuarios registrados</h2>
                 </div>
 
                 <div class="container justify-content-between">
@@ -21,6 +20,7 @@
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Usuario</th>
+                                    <th>Opciones</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -39,8 +39,8 @@
                                                 echo '<td>' . $usuario['id'] . '</td>';
                                                 echo '<td>' . $usuario['nombre'] . '</td>';
                                                 echo '<td>' . $usuario['apellidos'] . '</td>';
-                                                echo '<td>' . $usuario['edad'] . '</td>';
-                                                echo '<td>' . $usuario['provincia'] . '</td>';
+                                                echo '<td>' . $usuario['usuario'] . '</td>';
+                                              
                                                 echo '<td>';
                                                 echo '<a class="btn btn-outline-success btn-sm me-1" href="editarUsuario.php?id=' . $usuario['id'] . '" role="button">Editar</a></span>';
                                                 echo '<a class="btn btn-outline-danger btn-sm" href="borrar.php?id=' . $usuario['id'] . '" role="button">Borrar</a>';
