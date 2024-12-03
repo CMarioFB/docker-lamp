@@ -1,14 +1,5 @@
 <?php
 
-
-
-
-
-
-
-
-
-
 function conecta()
 {
     $servername = 'db';
@@ -20,12 +11,12 @@ function conecta()
     return $conPDO;
 }
 
-function conectaTareas()
+function conectaDonaciones()
 {
     $servername = 'db';
     $username = 'root';
     $password = 'test';
-    $dbname = 'tareas';
+    $dbname = 'donaciones';
 
     $conPDO = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,7 +27,7 @@ function creaDB()
 {
     try {
         $conn = conecta();
-        $sql = 'CREATE DATABASE IF NOT EXISTS tareas';
+        $sql = 'CREATE DATABASE IF NOT EXISTS donaciones';
         return ($conn->exec($sql));
     }
     catch (PDOException $e)
@@ -64,36 +55,32 @@ function creaTabla($sql)
     }
 }
 
-function creaTablaUsuarios()
+function creaTablaDonantes()
 {
-    $sql = "CREATE TABLE IF NOT EXISTS usuarios (
+    $sql = "CREATE TABLE IF NOT EXISTS donantes (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) NOT NULL,
         nombre VARCHAR(50) NOT NULL,
-        apellidos VARCHAR(100) NOT NULL,
-        contrasena VARCHAR(100)
-        /*
+        apellidos VARCHAR(50) NOT NULL,
         edad INT NOT NULL CHECK (Edad >= 18),
         grupo_sanguineo ENUM('O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+') NOT NULL,
         codigo_postal CHAR(5) NOT NULL CHECK (codigo_postal REGEXP '^[0-9]{5}$'),
-        telefono_movil CHAR(9) NOT NULL CHECK (telefono_movil REGEXP '^[0-9]{9}$')*/
+        telefono_movil CHAR(9) NOT NULL CHECK (telefono_movil REGEXP '^[0-9]{9}$')
     )";
     return creaTabla($sql);
 }
 
-function creaTablaTareas()
+function creaTablaDonaciones()
 {
-    $sql = "CREATE TABLE IF NOT EXISTS tareas (
+    $sql = "CREATE TABLE IF NOT EXISTS historico (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        titulo VARCHAR(50) NOT NULL,
-        descripcion VARCHAR(250) NOT NULL,
-        estado VARCHAR(50) NOT NULL,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+        donante INT NOT NULL,
+        fecha_donacion DATE NOT NULL,
+        fecha_proxima_donacion DATE GENERATED ALWAYS AS (DATE_ADD(fecha_donacion, INTERVAL 4 MONTH)) STORED,
+        FOREIGN KEY (donante) REFERENCES donantes(id)
     )";
     return creaTabla($sql);
 }
 
-/*
 function creaTablaAdmnistradores()
 {
     $sql = "CREATE TABLE IF NOT EXISTS administradores (
@@ -102,7 +89,7 @@ function creaTablaAdmnistradores()
     )";
     return creaTabla($sql);
 }
-*/
+
 function listaDonantes($codPostal, $grupo)
 {
     try {
