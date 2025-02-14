@@ -1,14 +1,15 @@
 <?php
 
+// voy en linea 151 y tb falta pulir creacion tabla gyms //
 
 function conecta($host, $user, $pass, $db)
 {
     $conexion = new mysqli($host, $user, $pass, $db);
     return $conexion;
 }
-function conectaTareas()
+function conectaGymPeso()
 {
-    return conecta('db', 'root', 'test', 'tareas');
+    return conecta('db', 'root', 'test', 'gympeso');
 }
 
 function cerrarConexion($conexion)
@@ -30,20 +31,20 @@ function creaDB()
         else
         {
             // Verificar si la base de datos ya existe
-            $sqlCheck = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'tareas'";
+            $sqlCheck = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'gympeso'";
             $resultado = $conexion->query($sqlCheck);
             if ($resultado && $resultado->num_rows > 0) {
-                return [false, 'La base de datos "tareas" ya existía.'];
+                return [false, 'La base de datos "gympeso" ya existía.'];
             }
 
-            $sql = 'CREATE DATABASE IF NOT EXISTS tareas';
+            $sql = 'CREATE DATABASE IF NOT EXISTS gympeso';
             if ($conexion->query($sql))
             {
-                return [true, 'Base de datos "tareas" creada correctamente'];
+                return [true, 'Base de datos "gympeso" creada correctamente'];
             }
             else
             {
-                return [false, 'No se pudo crear la base de datos "tareas".'];
+                return [false, 'No se pudo crear la base de datos "gympeso".'];
             }
         }
     }
@@ -57,10 +58,14 @@ function creaDB()
     }
 }
 
-function createTablaUsuarios()
+
+//** vamos modificando aqui ya creamos bd gympeso */
+
+
+function createTablaPesos()
 {
     try {
-        $conexion = conectaTareas();
+        $conexion = conectaGymPeso();
         
         if ($conexion->connect_error)
         {
@@ -69,22 +74,23 @@ function createTablaUsuarios()
         else
         {
             // Verificar si la tabla ya existe
-            $sqlCheck = "SHOW TABLES LIKE 'usuarios'";
+            $sqlCheck = "SHOW TABLES LIKE 'pesos'";
             $resultado = $conexion->query($sqlCheck);
 
             if ($resultado && $resultado->num_rows > 0)
             {
-                return [false, 'La tabla "usuarios" ya existía.'];
+                return [false, 'La tabla "pesos" ya existía.'];
             }
 
-            $sql = 'CREATE TABLE `usuarios` (`id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(50) NOT NULL , `nombre` VARCHAR(50) NOT NULL , `apellidos` VARCHAR(100) NOT NULL , `contrasena` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ';
+            $sql = 'CREATE TABLE `pesos` (`id` INT NOT NULL AUTO_INCREMENT , `fecha_dia` DATE
+             NOT NULL , `nombre` VARCHAR(50) NOT NULL , `peso_kg` INT NOT NULL , `foto` VARCHAR(50), PRIMARY KEY (`id`)) ';
             if ($conexion->query($sql))
             {
-                return [true, 'Tabla "usuarios" creada correctamente'];
+                return [true, 'Tabla "pesos" creada correctamente'];
             }
             else
             {
-                return [false, 'No se pudo crear la tabla "usuarios".'];
+                return [false, 'No se pudo crear la tabla "pesos".'];
             }
         }
     }
@@ -98,10 +104,12 @@ function createTablaUsuarios()
     }
 }
 
-function createTablaTareas()
+
+
+function createTablaGyms()
 {
     try {
-        $conexion = conectaTareas();
+        $conexion = conectaGymPeso();
         
         if ($conexion->connect_error)
         {
@@ -110,22 +118,23 @@ function createTablaTareas()
         else
         {
             // Verificar si la tabla ya existe
-            $sqlCheck = "SHOW TABLES LIKE 'tareas'";
+            $sqlCheck = "SHOW TABLES LIKE 'gyms'";
             $resultado = $conexion->query($sqlCheck);
 
             if ($resultado && $resultado->num_rows > 0)
             {
-                return [false, 'La tabla "tareas" ya existía.'];
+                return [false, 'La tabla "gyms" ya existía.'];
             }
+            // TABLA SIN ACABAR DE CREAR LA FOREIGN KEY TENEMOS QUE REFERENCIARLA A LA FECHA DE PESOS //
 
-            $sql = 'CREATE TABLE `tareas` (`id` INT NOT NULL AUTO_INCREMENT, `titulo` VARCHAR(50) NOT NULL, `descripcion` VARCHAR(250) NOT NULL, `estado` VARCHAR(50) NOT NULL, `id_usuario` INT NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id`))';
+            $sql = 'CREATE TABLE `gyms` (`id` INT NOT NULL AUTO_INCREMENT, `fecha_dia` DATE NOT NULL, `descripcion` VARCHAR(250) NOT NULL, `pasos` INT NOT NULL, `metros` INT NOT NULL,`id_usuario` INT NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_usuario`) REFERENCES `pesos`(`id`))';
             if ($conexion->query($sql))
             {
-                return [true, 'Tabla "tareas" creada correctamente'];
+                return [true, 'Tabla "gyms" creada correctamente'];
             }
             else
             {
-                return [false, 'No se pudo crear la tabla "tareas".'];
+                return [false, 'No se pudo crear la tabla "gyms".'];
             }
         }
     }
@@ -138,6 +147,9 @@ function createTablaTareas()
         cerrarConexion($conexion);
     }
 }
+
+
+// *********   creadas bd y tablas gyms y pesos *********** //
 
 function listaTareas()
 {

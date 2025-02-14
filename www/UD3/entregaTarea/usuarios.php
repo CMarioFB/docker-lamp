@@ -26,7 +26,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    require_once('database.php');
+                                    require_once('databasePDO.php');
                                     $resultado = listaUsuarios();
                                     if ($resultado && $resultado[0])
                                     {
